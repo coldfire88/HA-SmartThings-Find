@@ -115,14 +115,16 @@ class SmartThingsFindConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         # Ideally we'd store login_url in self if we want to persist it across error re-renders.
         if login_url:
             self.login_url = login_url
-        
+
+        _LOGGER.warning("LOGIN URL FOR USER: %s", getattr(self, 'login_url', 'NOT SET'))
+
         return self.async_show_form(
             step_id="auth_code",
             data_schema=vol.Schema({
                 vol.Required("redirect_url"): str
             }),
             description_placeholders={
-                "login_url": self.login_url
+                "login_url": getattr(self, 'login_url', 'URL not available - check HA logs')
             },
             errors=errors
         )
