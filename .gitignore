@@ -18,3 +18,22 @@ config/*
 
 # Dummy JSON responses
 test_data/
+
+# canonical portfolio entries (hub/templates/gitignore)
+node_modules/
+.next/
+.wrangler/
+.vercel/
+.turbo/
+.cache/
+*.tsbuildinfo
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+!.env.*.example
+.DS_Store
+Thumbs.db
+desktop.ini
+*.sync-conflict-*
